@@ -27,6 +27,7 @@ import {
 
 import { useAuth, useRecord } from "@/store/hooks";
 import { formatDate, formatCurrency, parseDate } from "@/lib/utils";
+import { DEFAULT_CLASS_COLOR } from "@/lib/design-tokens";
 
 const Record = () => {
   const { recordData, isLoading, getRecordDataByUserId } = useRecord();
@@ -118,7 +119,7 @@ const Record = () => {
 
         {/* Tab Asistencias */}
         <TabsContent value="asistencias" className="mt-4">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <CalendarIcon className="h-5 w-5 text-primary" />
@@ -160,7 +161,7 @@ const Record = () => {
                                   className="w-4 h-4 rounded-full flex-shrink-0 shadow-sm"
                                   style={{
                                     backgroundColor:
-                                      a.class?.style?.color ?? "#D10000",
+                                      a.class?.style?.color ?? DEFAULT_CLASS_COLOR,
                                   }}
                                 />
                                 <div className="min-w-0 flex-1">
@@ -245,7 +246,7 @@ const Record = () => {
 
         {/* Tab Pagos */}
         <TabsContent value="pagos" className="mt-4">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <CreditCard className="h-5 w-5 text-primary" />
@@ -336,7 +337,7 @@ const Record = () => {
 
         {/* Tab Paquetes */}
         <TabsContent value="paquetes" className="mt-4">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Package className="h-5 w-5 text-primary" />

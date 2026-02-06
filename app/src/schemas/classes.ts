@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { DEFAULT_CLASS_COLOR_HEX } from "@/lib/design-tokens";
 
 const timeHHmm = z
   .string()
@@ -26,7 +27,7 @@ export const upsertClassSchema = z.object({
   color: z
     .string()
     .regex(/^#([0-9a-fA-F]{6})$/, "Color inválido (usa formato #RRGGBB)")
-    .default("#D10000"),
+    .default(DEFAULT_CLASS_COLOR_HEX),
   schedules: z
     .array(
       z.object({

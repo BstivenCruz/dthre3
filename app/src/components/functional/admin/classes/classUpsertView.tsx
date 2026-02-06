@@ -37,6 +37,7 @@ import {
   type UpsertClassFormInput,
 } from "@/schemas/classes";
 import { getDayName } from "@/lib/utils";
+import { DEFAULT_CLASS_COLOR, DEFAULT_CLASS_COLOR_HEX } from "@/lib/design-tokens";
 
 const levelLabels: Record<AdminClassManagement["level"], string> = {
   iniciacion: "Iniciación",
@@ -89,7 +90,7 @@ const ClassUpsertView = () => {
       maxCapacity: 20,
       isSpecial: false,
       isActive: true,
-      color: "#D10000",
+      color: DEFAULT_CLASS_COLOR_HEX,
       schedules: [{ dayOfWeek: 1, startTime: "18:00", endTime: "19:00", isActive: true }],
     },
   });
@@ -113,7 +114,7 @@ const ClassUpsertView = () => {
         maxCapacity: 20,
         isSpecial: false,
         isActive: true,
-        color: "#D10000",
+        color: DEFAULT_CLASS_COLOR_HEX,
         schedules: [{ dayOfWeek: 1, startTime: "18:00", endTime: "19:00", isActive: true }],
       });
       return;
@@ -132,7 +133,7 @@ const ClassUpsertView = () => {
         maxCapacity: classToEdit.maxCapacity,
         isSpecial: classToEdit.isSpecial,
         isActive: classToEdit.isActive,
-        color: classToEdit.color ?? classToEdit.style?.color ?? "#D10000",
+        color: classToEdit.color ?? classToEdit.style?.color ?? DEFAULT_CLASS_COLOR_HEX,
         schedules: classToEdit.schedules.map((s) => ({
           dayOfWeek: s.dayOfWeek,
           startTime: s.startTime,
@@ -306,7 +307,7 @@ const ClassUpsertView = () => {
         <div className="lg:col-span-2">
           <Form {...form}>
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+              <Card className="transition-all duration-150 hover:shadow-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <BookOpen className="h-5 w-5 text-primary" />
@@ -318,7 +319,7 @@ const ClassUpsertView = () => {
                 </CardHeader>
                 <CardContent>
                   <Separator className="mb-6" />
-                  <div className="space-y-5">
+                  <div className="space-y-6">
                   <FormField
                     control={form.control}
                     name="name"
@@ -439,7 +440,7 @@ const ClassUpsertView = () => {
                           <div className="flex items-center gap-3">
                             <Input
                               type="color"
-                              value={field.value ?? "#D10000"}
+                              value={field.value ?? DEFAULT_CLASS_COLOR_HEX}
                               onChange={(e) => field.onChange(e.target.value)}
                               onBlur={field.onBlur}
                               name={field.name}
@@ -565,7 +566,7 @@ const ClassUpsertView = () => {
                 </CardContent>
               </Card>
 
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -695,7 +696,7 @@ const ClassUpsertView = () => {
 
         {/* Right: Summary */}
         <div className="space-y-6">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <FileText className="h-5 w-5 text-primary" />
@@ -736,9 +737,9 @@ const ClassUpsertView = () => {
                   <span className="font-medium inline-flex items-center gap-2">
                     <span
                       className="inline-block h-3 w-3 rounded-full border"
-                      style={{ backgroundColor: summary?.color ?? "#D10000" }}
+                      style={{ backgroundColor: summary?.color ?? DEFAULT_CLASS_COLOR_HEX }}
                     />
-                    <span className="font-mono">{summary?.color ?? "#D10000"}</span>
+                    <span className="font-mono">{summary?.color ?? DEFAULT_CLASS_COLOR_HEX}</span>
                   </span>
                 </div>
                 <div className="flex items-center justify-between">

@@ -36,6 +36,7 @@ import {
 } from "recharts";
 
 import { DashboardCard } from "@/components/ui/dashboard-card";
+import { CHART_COLORS } from "@/lib/design-tokens";
 import {
   Card,
   CardContent,
@@ -104,15 +105,14 @@ const DashboardAdmin = () => {
               : `↓ ${Math.abs(revenueGrowth).toFixed(1)}% vs mes anterior`
           }
           icon={CreditCard}
-          color="green"
-          animate={false}
+          color="success"
         />
         <DashboardCard
           title="Pagos Pendientes"
           value={formatCurrency(stats?.revenue.pendingPayments ?? 0)}
           subtitle="Por recibir"
           icon={Clock}
-          color="yellow"
+          color="warning"
         />
         <DashboardCard
           title="Estudiantes Activos"
@@ -125,7 +125,7 @@ const DashboardAdmin = () => {
 
       {/* Métricas Secundarias */}
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-medium flex items-center gap-2">
               <UserPlus className="h-4 w-4 text-primary" />
@@ -142,7 +142,7 @@ const DashboardAdmin = () => {
           </CardContent>
         </Card>
 
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-medium flex items-center gap-2">
               <AlertTriangle className="h-4 w-4 text-yellow-500" />
@@ -159,7 +159,7 @@ const DashboardAdmin = () => {
           </CardContent>
         </Card>
 
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-medium flex items-center gap-2">
               <BarChart3 className="h-4 w-4 text-primary" />
@@ -180,7 +180,7 @@ const DashboardAdmin = () => {
       {/* Sección Principal: Clases Próximas, Pagos Recientes y Asistencias */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Clases Próximas */}
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -256,7 +256,7 @@ const DashboardAdmin = () => {
         </Card>
 
         {/* Pagos Recientes */}
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -350,7 +350,7 @@ const DashboardAdmin = () => {
       {/* Top Teachers y Clases de Baja Ocupación */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Top Teachers */}
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <TrendingUp className="h-5 w-5 text-primary" />
@@ -405,7 +405,7 @@ const DashboardAdmin = () => {
         </Card>
 
         {/* Clases de Baja Ocupación */}
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <AlertTriangle className="h-5 w-5 text-yellow-500" />
@@ -462,7 +462,7 @@ const DashboardAdmin = () => {
       {adminDashboardData?.charts && (
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Historial de Ingresos */}
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <TrendingUp className="h-5 w-5 text-primary" />
@@ -523,7 +523,7 @@ const DashboardAdmin = () => {
           </Card>
 
           {/* Asistencia por Estilo */}
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <BarChart3 className="h-5 w-5 text-primary" />
@@ -554,27 +554,17 @@ const DashboardAdmin = () => {
                       labelLine={false}
                       label={false}
                       outerRadius={80}
-                      fill="#8884d8"
+                      fill={CHART_COLORS[0]}
                       dataKey="value"
                       nameKey="name"
                     >
                       {adminDashboardData.charts.attendanceByStyle.map(
-                        (entry, index) => {
-                          const colors = [
-                            "#D10000",
-                            "#3b82f6",
-                            "#10b981",
-                            "#f59e0b",
-                            "#8b5cf6",
-                            "#ec4899",
-                          ];
-                          return (
-                            <Cell
-                              key={`cell-${index}`}
-                              fill={colors[index % colors.length]}
-                            />
-                          );
-                        }
+                        (entry, index) => (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={CHART_COLORS[index % CHART_COLORS.length]}
+                          />
+                        )
                       )}
                     </Pie>
                     <Tooltip
@@ -592,7 +582,7 @@ const DashboardAdmin = () => {
           </Card>
 
           {/* Crecimiento de Estudiantes */}
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 lg:col-span-2">
+          <Card className="transition-all duration-150 hover:shadow-sm lg:col-span-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <UserPlus className="h-5 w-5 text-primary" />
@@ -651,7 +641,7 @@ const DashboardAdmin = () => {
       {/* Cards de Navegación */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Link href="/admin/clases">
-          <Card className="hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 cursor-pointer border-primary/20 hover:border-primary/40">
+          <Card className="transition-all duration-150 hover:shadow-sm cursor-pointer border-primary/20 hover:border-primary/40">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-primary" />
@@ -667,7 +657,7 @@ const DashboardAdmin = () => {
         </Link>
 
         <Link href="/admin/reportes">
-          <Card className="hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 cursor-pointer border-primary/20 hover:border-primary/40">
+          <Card className="transition-all duration-150 hover:shadow-sm cursor-pointer border-primary/20 hover:border-primary/40">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <FileText className="h-5 w-5 text-primary" />
@@ -683,7 +673,7 @@ const DashboardAdmin = () => {
         </Link>
 
         <Link href="/admin/usuarios">
-          <Card className="hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 cursor-pointer border-primary/20 hover:border-primary/40">
+          <Card className="transition-all duration-150 hover:shadow-sm cursor-pointer border-primary/20 hover:border-primary/40">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" />
@@ -699,7 +689,7 @@ const DashboardAdmin = () => {
         </Link>
 
         <Link href="/admin/config">
-          <Card className="hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 cursor-pointer border-primary/20 hover:border-primary/40">
+          <Card className="transition-all duration-150 hover:shadow-sm cursor-pointer border-primary/20 hover:border-primary/40">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Settings className="h-5 w-5 text-primary" />

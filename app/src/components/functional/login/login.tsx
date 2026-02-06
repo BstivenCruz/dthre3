@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#0A0A0A] relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute w-[600px] h-[600px] top-0 left-0 -translate-x-1/4 -translate-y-1/4 bg-primary/15 rounded-full blur-3xl"></div>
         <div className="absolute w-[600px] h-[600px] bottom-0 right-0 translate-x-1/4 translate-y-1/4 bg-primary/10 rounded-full blur-3xl"></div>
@@ -158,14 +158,14 @@ const Login = () => {
           </div>
 
           <div className="relative">
-            <div className="glass-card rounded-[35px] p-8 shadow-2xl" style={{ boxShadow: '0 0 20px rgba(209, 0, 0, 0.4), 0 0 40px rgba(209, 0, 0, 0.2)' }}>
+            <div className="glass-card rounded-xl p-8 auth-card-glow">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-white mb-2">Bienvenido</h2>
                 <p className="text-gray-400">Inicia sesión en tu cuenta</p>
               </div>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
                   name="email"
@@ -227,7 +227,7 @@ const Login = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-red-800 hover:opacity-90 py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98]"
+                  className="w-full bg-primary hover:bg-primary/90 py-4 rounded-xl font-bold text-lg shadow-sm transition-all duration-150 active:scale-[0.98]"
                   disabled={isLoading}
                 >
                   {isLoading ? (
