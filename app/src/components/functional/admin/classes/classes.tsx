@@ -35,6 +35,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import { getDayName } from "@/lib/utils";
+import { DEFAULT_CLASS_COLOR } from "@/lib/design-tokens";
 
 import { useClasses } from "@/store/hooks";
 import type { AdminClassManagement } from "@/store/interfaces/classes";
@@ -111,7 +112,7 @@ const Classes = () => {
                 </Alert>
             )}
 
-            <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+            <Card className="transition-all duration-150 hover:shadow-sm">
                 <CardHeader>
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -175,10 +176,10 @@ const Classes = () => {
                                         className="rounded-lg border bg-muted/30 hover:bg-muted/50 transition-all duration-300"
                                         style={{
                                             borderLeftWidth: 4,
-                                            borderLeftColor: c.color ?? c.style?.color ?? "#D10000",
+                                            borderLeftColor: c.color ?? c.style?.color ?? DEFAULT_CLASS_COLOR,
                                         }}
                                     >
-                                        <div className="p-5 space-y-4">
+                                        <div className="p-6 space-y-4">
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="min-w-0">
                                                     <p className="font-semibold text-base truncate">

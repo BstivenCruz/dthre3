@@ -59,7 +59,7 @@ const Packages = () => {
 
       {/* Paquete Activo */}
       {activePackage && (
-        <Card className="border-primary/50 bg-gradient-to-r from-primary/5 to-transparent transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="border-primary/50 bg-gradient-to-r from-primary/5 to-transparent transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -118,7 +118,7 @@ const Packages = () => {
 
       {/* Grid de Paquetes */}
       {packages?.packages.length === 0 ? (
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardContent className="py-16">
             <div className="flex flex-col items-center justify-center text-center">
               <Package className="h-16 w-16 text-muted-foreground/30 mb-4" />
@@ -147,7 +147,7 @@ const Packages = () => {
                     "h-full flex flex-col group transition-all duration-300",
                     isActivePackage
                       ? "border-primary/50 bg-gradient-to-br from-primary/5 to-transparent shadow-lg shadow-primary/10"
-                      : "hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20 hover:-translate-y-1"
+                      : "hover:shadow-sm hover:border-primary/20 hover:-translate-y-1"
                   )}
                 >
                   <CardHeader className="pb-3">

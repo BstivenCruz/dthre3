@@ -67,7 +67,7 @@ const SidebarUserInfo = () => {
               {getUserInitials()}
             </AvatarFallback>
           </Avatar>
-          <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-green-500 border-2 border-sidebar-background"></div>
+          <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-success border-2 border-sidebar-background"></div>
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">

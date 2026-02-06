@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { DashboardCard } from "@/components/ui/dashboard-card";
+import { DEFAULT_CLASS_COLOR } from "@/lib/design-tokens";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -180,7 +181,6 @@ const Dashboard = () => {
           }
           icon={CreditCard}
           color="primary"
-          animate={lowCredits}
           progress={creditsProgress}
         />
         <DashboardCard
@@ -188,7 +188,7 @@ const Dashboard = () => {
           value={streak.current}
           subtitle={`Meta: ${streak.max > 0 ? streak.max : "5"} días`}
           icon={Flame}
-          color="yellow"
+          color="warning"
           progress={streakProgress}
         />
         <DashboardCard
@@ -196,14 +196,14 @@ const Dashboard = () => {
           value={streak.max}
           subtitle="Tu mejor marca"
           icon={Trophy}
-          color="green"
+          color="success"
         />
         <DashboardCard
           title="Clases Hoy"
           value={todayClasses.length}
           subtitle={getDayName(today)}
           icon={Calendar}
-          color="blue"
+          color="info"
         />
       </div>
 
@@ -317,7 +317,7 @@ const Dashboard = () => {
       )}
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <Calendar className="h-5 w-5 text-primary" />
@@ -358,7 +358,7 @@ const Dashboard = () => {
                               <div
                                 className="w-4 h-4 rounded-full flex-shrink-0 shadow-sm"
                                 style={{
-                                  backgroundColor: c.style?.color ?? "#D10000",
+                                  backgroundColor: c.style?.color ?? DEFAULT_CLASS_COLOR,
                                 }}
                               />
                               <div className="min-w-0 flex-1">
@@ -434,7 +434,7 @@ const Dashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <Trophy className="h-5 w-5 text-primary" />
@@ -472,7 +472,7 @@ const Dashboard = () => {
                           <div
                             className="w-4 h-4 rounded-full flex-shrink-0 shadow-sm"
                             style={{
-                              backgroundColor: a.class?.style?.color ?? "#D10000",
+                              backgroundColor: a.class?.style?.color ?? DEFAULT_CLASS_COLOR,
                             }}
                           />
                           <div className="min-w-0 flex-1">
@@ -510,7 +510,7 @@ const Dashboard = () => {
 
       {/* Historial de Gastos de Créditos */}
       {activePackage && !activePackage.isUnlimited && (
-        <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+        <Card className="transition-all duration-150 hover:shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <Receipt className="h-5 w-5 text-primary" />
@@ -592,7 +592,7 @@ const Dashboard = () => {
                             <div
                               className="w-4 h-4 rounded-full flex-shrink-0 shadow-sm"
                               style={{
-                                backgroundColor: attendance.class?.style?.color ?? "#D10000",
+                                backgroundColor: attendance.class?.style?.color ?? DEFAULT_CLASS_COLOR,
                               }}
                             />
                             <div className="min-w-0 flex-1">

@@ -23,6 +23,7 @@ import { useAuth, useCalendar } from "@/store/hooks";
 import type { CalendarClass } from "@/store/interfaces/calendar";
 
 import { getDayName } from "@/lib/utils";
+import { DEFAULT_CLASS_COLOR } from "@/lib/design-tokens";
 
 const Calendar = () => {
   const { calendarData, isLoading, getCalendarClassesByUserId } = useCalendar();
@@ -94,7 +95,7 @@ const Calendar = () => {
         </TabsList>
         {/* Contenido para vista Semana */}
         <TabsContent value="week" className="mt-4">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <Button
@@ -180,7 +181,7 @@ const Calendar = () => {
                                   <div
                                     className="group/class p-3 rounded-lg bg-card border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-all duration-200 cursor-pointer"
                                     style={{
-                                      borderLeftColor: c.style?.color ?? "#D10000",
+                                      borderLeftColor: c.style?.color ?? DEFAULT_CLASS_COLOR,
                                       borderLeftWidth: 3,
                                     }}
                                   >
@@ -271,7 +272,7 @@ const Calendar = () => {
 
         {/* Contenido para vista Día */}
         <TabsContent value="day" className="mt-4">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+          <Card className="transition-all duration-150 hover:shadow-sm">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <Button
@@ -363,7 +364,7 @@ const Calendar = () => {
                                     className="group/class p-4 rounded-lg bg-card border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-all duration-200 cursor-pointer"
                                     style={{
                                       borderLeftColor:
-                                        c.style?.color ?? "#D10000",
+                                        c.style?.color ?? DEFAULT_CLASS_COLOR,
                                       borderLeftWidth: 4,
                                     }}
                                   >
@@ -374,7 +375,7 @@ const Calendar = () => {
                                             className="w-3 h-3 rounded-full flex-shrink-0"
                                             style={{
                                               backgroundColor:
-                                                c.style?.color ?? "#D10000",
+                                                c.style?.color ?? DEFAULT_CLASS_COLOR,
                                             }}
                                           />
                                           <p className="font-semibold text-base truncate group-hover/class:text-primary transition-colors">
