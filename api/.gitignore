@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+node_modules/
+/.pnp
+.pnp.js
+
+
+# production
+/build
+/dist
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+.pnpm-debug.log*
+.yarn
+
+# local env files
+.env
+.env.test
+.env*.local
+
+# Log
+log
+*.log

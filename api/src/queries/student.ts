@@ -1,0 +1,1 @@
+export const _getByUserId = "SELECT student_profiles_get_by_user_id($1)";

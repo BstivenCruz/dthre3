@@ -1,0 +1,1 @@
+export const _getRecordDataByUserId = "SELECT record_data_get_by_user_id($1)";

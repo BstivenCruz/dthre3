@@ -1,0 +1,1 @@
+export const _getDashboardDataByUserId = "SELECT dashboard_get_by_user_id($1)";
